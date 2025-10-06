@@ -37,7 +37,7 @@ struct RootTabView: View {
                     Text("Charts")
                 }
                 .accessibilityLabel("Mood Charts")
-                .tag(Tab.charts)
+                 .tag(Tab.charts)
 
             // --- Tab 4: Settings ---
             SettingsView()

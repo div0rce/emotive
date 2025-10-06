@@ -14,6 +14,16 @@ struct EmotiveApp: App {
     private let persistenceController = PersistenceController.shared
     
     @AppStorage("hasSeenOnboarding") var hasSeenOnboarding = false
+    @AppStorage("selectedTheme") private var selectedThemeRaw: String = "auto" // "auto" | "light" | "dark"
+    
+    private var colorSchemePreference: ColorScheme? {
+        switch selectedThemeRaw {
+        case "light": return .light
+        case "dark":  return .dark
+        default:      return nil     // auto: follow system
+        }
+    }
+    
     var body: some Scene {
         WindowGroup {
             Group {
@@ -27,6 +37,7 @@ struct EmotiveApp: App {
             
             .environment(\.managedObjectContext,
                           persistenceController.container.viewContext)
+            .preferredColorScheme(colorSchemePreference)
         }
     }
 }
