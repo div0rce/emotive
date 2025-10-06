@@ -49,6 +49,7 @@ struct RootTabView: View {
                 .tag(Tab.settings)
         }
     }
+    
 }
 
 #Preview {
